@@ -49,7 +49,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: left;
     padding: 20px;
     z-index: 20;
     opacity: 0;
@@ -59,15 +59,39 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
+    text-align: left;
+}
+
+.warning {
+    opacity: 0;
+    color: #dadada;
+    text-shadow: 2px 2px 5px black;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    transition: all 300ms;
+}
+
+.warning p {
+    text-transform: uppercase;
+    font-size: 1.1rem;
 }
 
 /* XMB menu */
 #menu {
     position: fixed;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.xmb-main {
+    position: relative;
     z-index: 10;
     display: flex;
     justify-content: center;
@@ -75,29 +99,21 @@ body {
     gap: 50px;
 }
 
-.xmb-main {
-    position: relative;
-    z-index: 10;          /* boven video */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-}
-
-/* XMB Titles (Users, Settings, Games...) */
+/* XMB Titles (Users, Settings, Game etc.) */
 .xmb-title {
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
     text-align: center;
+    position: relative;
 }
 
 .xmb-title img {
     width: 80px;
     margin-bottom: 5px;
     opacity: 0.6;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .xmb-title.active img {
@@ -117,18 +133,26 @@ body {
 
 /* Submenu’s */
 .xmb-contents {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    /* we'll translate in JS: x is horizontal, y is vertical scroll */
+    transform: translateX(-50%);
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+    white-space: nowrap;
+    /* allow items to scroll within the title container */
 }
 
 .submenu {
-    display: none; /* standaard verborgen */
+    /* all items are visible when the parent section is active */
     align-items: center;
     font-size: 14px;
     color: #fff;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+    flex-direction: row;
 }
 
 .submenu img {
@@ -136,9 +160,12 @@ body {
     margin-right: 5px;
 }
 
-/* Alleen actieve submenu zichtbaar */
+/* highlight selected submenu item */
 .submenu.active {
-    display: flex;
+    /* instead of using this class for visibility, we use it for
+       styling the currently selected item */
+    transform: scale(1.2);
+    opacity: 1;
 }
 
 /* Hover effect (optioneel) */
@@ -159,26 +186,23 @@ body {
 }
 
 /* Submenu hidden by default */
+.xmb-contents {
+    display: none;
+}
+
 .xmb-contents .submenu {
     display: none;
 }
 
-/* Active section submenu visible */
-.xmb-title.active .xmb-contents .submenu {
-    display: block;
-}
-
-/* Submenu hidden by default */
-.xmb-contents .submenu {
-    display: none;
-    align-items: center;
-    font-size: 14px;
-    color: #fff;
-}
-
-/* Only show active submenu */
-.xmb-title.active .xmb-contents .submenu.active {
+/* Active section submenu visible - show as flex row */
+.xmb-title.active .xmb-contents {
     display: flex;
+}
+
+.xmb-title.active .xmb-contents .submenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* Optional: highlight active submenu */

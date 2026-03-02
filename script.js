@@ -61,6 +61,11 @@ function showSubmenu() {
             subs.forEach(sm => sm.classList.remove("active"));
         }
     });
+
+    // Menu verschuiven zodat geselecteerde item in het midden blijft
+    const itemWidth = 130; // Gemiddelde breedte per item (img + spacing)
+    const offsetX = -sectionNumber * itemWidth;
+    menu.style.transform = `translateX(${offsetX}px) translate(-50%, -50%)`;
 }
 
 // Keyboard navigation
