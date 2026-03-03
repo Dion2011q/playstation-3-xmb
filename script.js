@@ -18,7 +18,9 @@ startupSound.play();
 // Clock
 function updateClock() {
     const d = new Date();
-    dateTime.innerText = `${d.getDate()}/${d.getMonth()+1} ${d.getHours()}:${d.getMinutes()}`;
+    const hours = String(d.getHours()).padStart(2, '0');
+    const minutes = String(d.getMinutes()).padStart(2, '0');
+    dateTime.innerText = `${d.getDate()}/${d.getMonth()+1} ${hours}:${minutes}`;
     setTimeout(updateClock, 1000);
 }
 
@@ -26,7 +28,7 @@ function updateClock() {
 menu.style.opacity = '0';
 clockSection.style.opacity = '0';
 
-// Start sequence: Logo → Warning → Menu
+// Start sequence: Logo, Warning, Menu
 async function startSequence() {
     video.style.opacity = '1';
     titles.style.opacity = '1';
