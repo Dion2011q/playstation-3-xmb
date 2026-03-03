@@ -56,9 +56,21 @@ function showSubmenu() {
             subs.forEach((sm, idx) => {
                 sm.classList.toggle("active", idx === subsection);
             });
+
+            // scroll submenu container vertically so the selected entry
+            // appears in a fixed spot (top of the list by default)
+            if (subs.length) {
+                const container = sec.querySelector('.xmb-contents');
+                const gap = 8; // matches the CSS gap value
+                const itemHeight = subs[0].offsetHeight + gap;
+                const offsetY = -subsection * itemHeight;
+                container.style.transform = `translateX(-50%) translateY(${offsetY}px)`;
+            }
         } else {
             sec.classList.remove("active");
             subs.forEach(sm => sm.classList.remove("active"));
+            const container = sec.querySelector('.xmb-contents');
+            if (container) container.style.transform = '';
         }
     });
 
