@@ -102,12 +102,22 @@ document.body.addEventListener('keydown', e => {
             showSubmenu();
             break;
         case 'ArrowDown':
-            subsection = Math.min(subsection + 1, maxSub);
+            // move down; wrap to top when at end so scrolling doesn't drift
+            if (subsection < maxSub) {
+                subsection++;
+            } else {
+                subsection = 0;
+            }
             navSound.play();
             showSubmenu();
             break;
         case 'ArrowUp':
-            subsection = Math.max(subsection - 1, 0);
+            // move up; wrap to bottom when at start
+            if (subsection > 0) {
+                subsection--;
+            } else {
+                subsection = maxSub;
+            }
             navSound.play();
             showSubmenu();
             break;
