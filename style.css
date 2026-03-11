@@ -27,14 +27,16 @@ body {
 /* Startup Logo */
 .title {
     position: fixed;
-    top: 50%;
-    transform: translate(260%, -50%);
+    top: 47%;
+    right: 6vw;
+    transform: translateY(-50%);
     z-index: 10;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
+
 .title img.startuplogo {
-    width: 450px;
+    width: 550px;
 }
 
 /* Warning scherm */
