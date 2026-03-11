@@ -169,6 +169,16 @@ body {
     opacity: 1;
 }
 
+@keyframes breathe {
+    0%, 100% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+    50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+}
+
+.submenu.active p {
+    text-shadow: 1px 1px 10px rgba(255,255,255,0.8);
+    animation: breathe 2.s infinite;
+}
+
 /* Clock */
 .clock {
   opacity: 0;
@@ -214,11 +224,4 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-/* Optional: highlight active submenu */
-.xmb-title.active .xmb-contents .submenu.active {
-    background: rgba(255,255,255,0.1);
-    padding: 5px 10px;
-    border-radius: 5px;
 }
