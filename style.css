@@ -89,7 +89,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    transition: transform 0.15s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 }
 
 .xmb-main {
@@ -176,7 +176,7 @@ body {
 
 .submenu.active p {
     text-shadow: 1.5px 1.5px 10px rgba(255,255,255,0.8);
-    animation: breathe 2.5s infinite;
+    animation: breathe 1.3s infinite;
 }
 
 /* Clock */
