@@ -89,7 +89,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 50px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.15s ease-in-out;
 }
 
 .xmb-main {
@@ -114,13 +114,13 @@ body {
 .xmb-title img {
     width: 80px;
     margin-bottom: 5px;
-    opacity: 0.6;
+    opacity: 0.5;
     transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
 }
 
 .xmb-title.active img {
     transform: scale(1.2);
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .titletext {
